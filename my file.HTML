@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My First Website</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <h1>Hello, World!</h1>
-  <p>This is my first web page setup successfully!</p>
-  
+  <div class="container">
+    <div class="weather-card">
+      <h1 class="app-title">🌤️ Weather App</h1>
 
+      <div class="search-box">
+        <input type="text" id="cityInput" placeholder="Search city..." />
+        <button id="searchBtn">
+          <i class="fa fa-search"></i> Search
+        </button>
+      </div>
+
+      <div class="weather-info" id="weatherInfo">
+        <h2 id="cityName">Your City</h2>
+        <img id="weatherIcon" src="" alt="" />
+        <p id="temperature">--°C</p>
+        <p id="description">Weather info will appear here</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a2e0f1a1d6.js" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 </html>
