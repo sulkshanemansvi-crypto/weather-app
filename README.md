@@ -1,4 +1,5 @@
 Aura 🌤️
+
 A modern, responsive, and professional weather application that provides real-time weather information and forecasts with a beautiful user interface.
 
 🚀 Features
@@ -59,6 +60,8 @@ weather-app/
 ├── style.css           # Complete styling with responsive design
 ├── script.js           # JavaScript functionality
 └── README.md           # This documentation file
+
+
 🎨 Design Features
 Visual Design
 Modern Gradient Backgrounds - Dynamic backgrounds based on weather conditions
