@@ -1,34 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather App</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aura</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <div class="container">
-    <div class="weather-card">
-      <h1 class="app-title">🌤️ Weather App</h1>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <i class="fas fa-cloud-sun"></i>
+                    Aura
+                </h1>
+                <div class="current-time" id="currentTime"></div>
+            </div>
+        </header>
 
-      <div class="search-box">
-        <input type="text" id="cityInput" placeholder="Search city..." />
-        <button id="searchBtn">
-          <i class="fa fa-search"></i> Search
-        </button>
-      </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="cityInput" placeholder="Enter city name..." autocomplete="off" />
+                        <button id="searchBtn" class="search-btn">
+                            <i class="fas fa-search-location"></i>
+                            Search
+                        </button>
+                    </div>
+                    <div class="location-buttons">
+                        <button id="currentLocationBtn" class="location-btn">
+                            <i class="fas fa-location-arrow"></i>
+                            Current Location
+                        </button>
+                    </div>
+                </div>
+            </section>
 
-      <div class="weather-info" id="weatherInfo">
-        <h2 id="cityName">Your City</h2>
-        <img id="weatherIcon" src="" alt="" />
-        <p id="temperature">--°C</p>
-        <p id="description">Weather info will appear here</p>
-      </div>
+            <!-- Loading & Error States -->
+            <div class="spinner-container" id="loadingSpinner">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+
+            <!-- Weather Display -->
+            <section class="weather-display" id="weatherDisplay">
+                <!-- Current Weather -->
+                <div class="current-weather-card">
+                    <div class="location-info">
+                        <h2 id="cityName" class="city-name">Your City</h2>
+                        <p id="currentDate" class="current-date"></p>
+                    </div>
+
+                    <div class="weather-main">
+                        <div class="temperature-section">
+                            <div class="weather-icon" id="weatherIcon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <div class="temperature-info">
+                                <div id="temperature" class="temperature">--°C</div>
+                                <div id="description" class="description">Weather information</div>
+                            </div>
+                        </div>
+
+                        <div class="weather-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-temperature-high"></i>
+                                <div>
+                                    <span class="stat-label">Feels Like</span>
+                                    <span id="feelsLike" class="stat-value">--°C</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-tint"></i>
+                                <div>
+                                    <span class="stat-label">Humidity</span>
+                                    <span id="humidity" class="stat-value">--%</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-wind"></i>
+                                <div>
+                                    <span class="stat-label">Wind Speed</span>
+                                    <span id="windSpeed" class="stat-value">-- km/h</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-compress-alt"></i>
+                                <div>
+                                    <span class="stat-label">Pressure</span>
+                                    <span id="pressure" class="stat-value">-- hPa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Info Cards -->
+                <div class="info-grid">
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-eye"></i>
+                            <h3>Visibility</h3>
+                        </div>
+                        <div id="visibility" class="info-card-value">-- km</div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-cloud"></i>
+                            <h3>Cloudiness</h3>
+                        </div>
+                        <div id="cloudiness" class="info-card-value">--%</div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-sun"></i>
+                            <h3>UV Index</h3>
+                        </div>
+                        <div id="uvIndex" class="info-card-value">--</div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-wind"></i>
+                            <h3>Wind Direction</h3>
+                        </div>
+                        <div id="windDirection" class="info-card-value">--°</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forecast Section -->
+            <section class="forecast-section" id="forecastSection">
+                <h3 class="section-title">5-Day Forecast</h3>
+                <div class="forecast-container" id="forecastContainer">
+                    <!-- Forecast items will be dynamically added here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; Aura. Powered by Mansvi Sulakshane</p>
+        </footer>
     </div>
-  </div>
 
-  <!-- Font Awesome for icons -->
-  <script src="https://kit.fontawesome.com/a2e0f1a1d6.js" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
